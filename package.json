@@ -1,0 +1,18 @@
+{
+  "name": "cu_submitter_frontend",
+  "version": "0.1",
+  "description": "Frontend for the CU Submitter app",
+  "main": "src/index.ts",
+  "repository": "https://github.com/noahrav/cu_submitter_frontend.git",
+  "author": "Noahrav",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "start": "yarn build && electron ./dist/index.js"
+  },
+  "devDependencies": {
+    "electron": "^28.1.0",
+    "typescript": "^5.3.3"
+  }
+}
