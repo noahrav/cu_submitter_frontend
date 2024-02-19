@@ -2,17 +2,44 @@
   "name": "cu_submitter_frontend",
   "version": "0.1",
   "description": "Frontend for the CU Submitter app",
-  "main": "src/index.ts",
+  "main": "build/electron/main.ts",
   "repository": "https://github.com/noahrav/cu_submitter_frontend.git",
   "author": "Noahrav",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
-    "start": "yarn build && electron ./dist/index.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "electron:dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
+    "electron:build": "yarn build && tsc -p electron && electron-builder",
+    "electron:dist": "yarn build && tsc -p electron && electron-builder --mac --dir"
+  },
+  "dependencies": {
+    "electron": "29.0.0-beta.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "electron": "^28.1.0",
-    "typescript": "^5.3.3"
+    "@types/react": "^18.2.56",
+    "@types/react-dom": "^18.2.19",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron-builder": "^24.9.1",
+    "electron-is-dev": "^3.0.1",
+    "wait-on": "^7.2.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
