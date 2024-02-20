@@ -10,11 +10,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "electron:dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
-    "electron:build": "yarn build && tsc -p electron && electron-builder",
-    "electron:dist": "yarn build && tsc -p electron && electron-builder --mac --dir"
+    "electron:dev": "concurrently \"cross-env BROWSER=none npm run start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
+    "electron:build": "npm run build && tsc -p electron && electron-builder",
+    "electron:dist": "npm run build && tsc -p electron && electron-builder --mac --dir"
   },
   "dependencies": {
+    "@mui/base": "^5.0.0-beta.36",
+    "axios": "^1.6.7",
     "electron": "29.0.0-beta.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
